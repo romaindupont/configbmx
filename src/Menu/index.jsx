@@ -13,7 +13,6 @@ const Menu = () => {
 	let arraySpec = [];
 	const menuClic = (e) => {
 		e.preventDefault();
-		console.log(e)
 		setSpec([])
 		if (e.target.textContent.length < 25) {
 			setFilterData({data: myData.filter(data => data.name === e.target.textContent), open: true});
@@ -27,6 +26,12 @@ const Menu = () => {
 			}
 		}
 }
+const menuHover = (e) => {
+	e.preventDefault();
+	if (e.target.textContent.length < 25) {
+		setFilterData({data: myData.filter(data => data.name === e.target.textContent), open: true});
+	}
+}
 	const closeSecondMenu = () => {
 		setOpenSecondMenu(false);
 		setFilterData({data: myData, open: false});
@@ -38,14 +43,14 @@ const Menu = () => {
 					{
 						myData.map((data, i) => {
 							return (
-								<li key={i} className="menu-li">{data.name}</li>
+								<li key={i} className="menu-li" onMouseEnter={menuHover}>{data.name}</li>
 							)
 						})
 					}
 				</ul>
 			</nav>
 			{openSecondMenu  && (
-				<SubMenu subMenuTitle={spec} closeSecondMenu={closeSecondMenu} menuTitle={filterData.data[0].name} />
+				<SubMenu subMenuTitle={spec} closeSecondMenu={closeSecondMenu} menuTitle={filterData.data[0].name} filterData={filterData.data[0].specification[0]} />
 			)}
 		</>
 	)
