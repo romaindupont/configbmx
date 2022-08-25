@@ -12,13 +12,13 @@ export default [
 							{
 								id: 1,
 								modelName: 'truc1',
-								modelImage: 'une image'
+								modelImage: './images/Capture.png'
 		
 							},
 							{
 								id: 2,
 								modelName: 'truc2',
-								modelImage: 'uneimagetruc2'
+								modelImage: './images/Capture.png'
 		
 							}
 						],
@@ -30,7 +30,7 @@ export default [
 							{
 								id: 1,
 								modelName: 'truc10',
-								modelImage: 'imagetruc10'
+								modelImage: './images/Capture.png'
 		
 							}
 						],
