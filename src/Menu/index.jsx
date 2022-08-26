@@ -19,10 +19,10 @@ const Menu = () => {
 			if (filterData.open) {
 				arraySpec = [];
 				for (let title in filterData.data[0].specification[0]) {
-					arraySpec.push(title)
+					arraySpec.push(title);
 				}
-				setSpec(arraySpec)
-				setOpenSecondMenu(true)
+				setSpec(arraySpec);
+				setOpenSecondMenu(true);
 			}
 		}
 }
@@ -50,7 +50,12 @@ const menuHover = (e) => {
 				</ul>
 			</nav>
 			{openSecondMenu  && (
-				<SubMenu subMenuTitle={spec} closeSecondMenu={closeSecondMenu} menuTitle={filterData.data[0].name} filterData={filterData.data[0].specification[0]} />
+				<SubMenu
+					subMenuTitle={spec}
+					closeSecondMenu={closeSecondMenu}
+					menuTitle={filterData.data[0].name}
+					filterData={filterData.data[0].specification[0]}
+				/>
 			)}
 		</>
 	)

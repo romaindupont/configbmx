@@ -48,29 +48,29 @@ table {
 }
 
 #app {
-	background: #F1EEEE;
 	display: flex;
 	width: 100vw;
 	height: 100vh;
+	background: #F1EEEE;
 	overflow: hidden;
 }
 
 .menu {
-	background: white;
 	width: 15%;
+	background: white;
 	border-left: 6px solid #FFB320;
 	border-right: 6px solid #FFB320;
 }
 
 ul.menu-ul {
+	display: flex;
 	width: 100%;
 	height: 100%;
-	display: flex;
+	margin-left: 20px;
+	position: relative;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: flex-start;
-	margin-left: 20px;
-	position: relative;
 }
 li.menu-li {
 	font-weight: 900;
@@ -87,15 +87,26 @@ li.menu-li::after {
 	right: 20%;
 }
 .secondMenu {
-	background: white;
+	display: block;
 	width: 15%;
+	height: 100%;
+	background: white;
 	border-left: 6px solid #FFB320;
 	border-right: 6px solid #FFB320;
 	position: absolute;
 	top: 0;
-	left: 0;
 	z-index: 2;
-	height: 100%;
+	animation: openClose 1s ease-in-out;
+	/* left: -15%; */
+	/* transition: left 1s ease-in-out; */
+}
+@keyframes openClose {
+	0% {
+		left: -15%;
+	}
+	100% {
+		left: 0;
+	}
 }
 
 .close::after {
@@ -108,18 +119,19 @@ li.menu-li::after {
 }
 .close {
 	position: absolute;
-	right: 15px;
+	right: 0;
+	top: 0;
 	width: 4px;
 	height: 20px;
 	background: #ffb320;
-	top: 5px;
 	transform: rotate(45deg);
 	cursor: pointer;
+	margin: 0.5rem 1rem;
 }
 .triangle {
+	position: absolute;
 	border-bottom: 15px solid #ffb320;
 	border-left: 15px solid transparent;
-	position: absolute;
 }
 .triangle:hover {
 	border-bottom: 15px solid #f8ca6e;
@@ -145,7 +157,17 @@ li.menu-li::after {
 	text-align: center;
 }
 .choiceTable-image {
-	width: 50%;
+	width: 35%;
+}
+.choiceTable.modelLi::after {
+	content: '';
+	width: 80%;
+	height: 100%;
+	border: 2px solid #ffb320;
+	margin-left: 10%;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 h1.secondMenu-title {
 	text-align: center;
@@ -164,22 +186,47 @@ li {
 .input-color {
 	text-align: center;
 }
+.input-color > input {
+	width: 50%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+}
 
 .model-choice {
-	background: white;
-	width: 100%;
-	height: 100%;
 	display: flex;
+	width: 80%;
+	height: 200px;
+	overflow: auto;
+	background: white;
+	box-shadow: 0 0 0 2px #ffb320;
+	position: absolute;
+	left: 11%;
+	top: 100%;
 	flex-wrap: wrap;
 	text-align: center;
-	overflow: auto;
-	box-shadow: 0px 0px 0px 3px #00000045;
+	justify-content: center;
+	animation: modelMenu 1s ease-in-out ;
+}
+
+@keyframes modelMenu {
+	0% {
+		height: 0px;
+	}
+	100% {
+		height: 200px;
+	}
 }
 .model {
-	width: 47%;
+	width: 40%;
 	height: 60px;
-	margin: 1px;
+	margin: 5px;
 	border: 0.5px solid #ffb320;
+	cursor: pointer;
+}
+.model:hover {
+	opacity: 0.5;
 }
 
 .model > img {

@@ -11,48 +11,61 @@ const ChoiceMenu = ({
 	setNumberTexture,
 	numberTexture
 }) => {
+	const [ numberModel, setNumberModel ] = useState(0);
 	const leftClic = () => {
 		if (title == 'fabricant') {
 			if (numberMarque-1 < 0) {
-				setNumberMarque(filterData.fabricant.length - 1)
+				setNumberMarque(filterData.fabricant.length - 1);
 			}
 			else {
-				setNumberMarque(numberMarque - 1)
+				setNumberMarque(numberMarque - 1);
 			}
 		}
 		else {
 			if (numberTexture-1 < 0) {
-				setNumberTexture(filterData.texture.length - 1)
+				setNumberTexture(filterData.texture.length - 1);
 			}
 			else {
-				setNumberTexture(numberTexture - 1)
+				setNumberTexture(numberTexture - 1);
 			}
 		}
+		setNumberModel(0);
 	}
 	const rightClic = () => {
 		if (title == 'fabricant') { 
 			if (numberMarque + 1 > (filterData.fabricant.length - 1)) {
-				setNumberMarque(0)
+				setNumberMarque(0);
 			}
 			else {
-				setNumberMarque(numberMarque+1)
+				setNumberMarque(numberMarque+1);
 			}
 		}
 		else {
 			if (numberTexture + 1 > (filterData.texture.length - 1)) {
-				setNumberTexture(0)
+				setNumberTexture(0);
 			}
 			else {
-				setNumberTexture(numberTexture + 1)
+				setNumberTexture(numberTexture + 1);
 			}
 		}
+		setNumberModel(0);
 	}
-	console.log(filterData)
 	return (
 		<>
 			<li key={number}>{title}</li>
-			<div className="choiceTable"><span className="triangle left" onClick={leftClic}></span><p>{filterDataTitle}</p><span className="triangle right" onClick={rightClic}></span></div>
-			{title === 'fabricant' ? <ModelChoice filterData={filterData} numberMarque={numberMarque} /> : '' }
+			<div className="choiceTable">
+				<span className="triangle left" onClick={leftClic}></span>
+				<p>{filterDataTitle}</p>
+				<span className="triangle right" onClick={rightClic}></span>
+			</div>
+			{title === 'fabricant' ? 
+				<ModelChoice
+					filterData={filterData}
+					numberMarque={numberMarque}
+					numberModel={numberModel}
+					setNumberModel={setNumberModel}
+				/> : ''
+			}
 		</>
 	)
 }
