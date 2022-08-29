@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChoiceMenu from "./ChoiceMenu";
 import InputColor from "./InputColor";
 
@@ -10,6 +10,23 @@ const SubMenu = ({
 }) => {
 	const [ numberMarque, setNumberMarque ] = useState(0);
 	const [ numberTexture, setNumberTexture ] = useState(0);
+	const [ numberModel, setNumberModel ] = useState(0);
+	const [ orderCadreSelection, setOrderCadreSelection ] = useState({
+		Idfabricant: '',
+		modeleId: '',
+		colorPrincipal: '',
+		secondColor: '',
+		textureId: ''
+	});
+	const validButtonClick = (e) => {
+		console.log(orderCadreSelection)
+	}
+	useEffect(() => {
+		setOrderCadreSelection({...orderCadreSelection,
+			Idfabricant: filterData.fabricant[numberMarque].id,
+			modeleId: filterData.fabricant[numberMarque].model[numberModel].id
+		})
+ 	}, [numberMarque, numberModel]);
 	return (
 		<nav className="secondMenu ">
 			<div className="close" onClick={closeSecondMenu}></div>
@@ -25,6 +42,8 @@ const SubMenu = ({
 						numberMarque={numberMarque}
 						setNumberMarque={setNumberMarque}
 						key={i}
+						numberModel={numberModel}
+						setNumberModel={setNumberModel}
 					/> : 
 					title === 'texture' ? 
 					<ChoiceMenu
@@ -35,15 +54,22 @@ const SubMenu = ({
 						numberTexture={numberTexture}
 						setNumberTexture={setNumberTexture}
 						key={i}
+						numberModel={numberModel}
+						setNumberModel={setNumberModel}
 					/> :
 					<InputColor
 						title={title}
 						color={filterData.colorPrincipal}
 						number={i}
 						key={i}
+						numberModel={numberModel}
+						setNumberModel={setNumberModel}
+						orderCadreSelection={orderCadreSelection}
+						setOrderCadreSelection={setOrderCadreSelection}
 					/>
 				))}
 			</ul>
+			<button type="button" onClick={validButtonClick}>Valider</button>
 		</nav>
 	)
 }

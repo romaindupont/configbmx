@@ -9,14 +9,15 @@ const ChoiceMenu = ({
 	setNumberMarque,
 	numberMarque,
 	setNumberTexture,
-	numberTexture
+	numberTexture,
+	numberModel,
+	setNumberModel
 }) => {
-	const [ numberModel, setNumberModel ] = useState(0);
 	const leftClic = () => {
 		if (title == 'fabricant') {
 			if (numberMarque-1 < 0) {
 				setNumberMarque(filterData.fabricant.length - 1);
-			}
+		}
 			else {
 				setNumberMarque(numberMarque - 1);
 			}
@@ -37,7 +38,7 @@ const ChoiceMenu = ({
 				setNumberMarque(0);
 			}
 			else {
-				setNumberMarque(numberMarque+1);
+				setNumberMarque(numberMarque + 1);
 			}
 		}
 		else {
@@ -50,6 +51,7 @@ const ChoiceMenu = ({
 		}
 		setNumberModel(0);
 	}
+	
 	return (
 		<>
 			<li key={number}>{title}</li>

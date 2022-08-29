@@ -232,3 +232,52 @@ li {
 .model > img {
 	width: 45%;
 }
+
+.menuOrder {
+	width: 50px;
+	height: 150px;
+	position: absolute;
+	top: 15px;
+	right: 5px;
+	display: flex;
+	flex-direction: column;
+}
+
+.shop, .camera {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.shop:hover, .camera:hover {
+	opacity: 0.8;
+}
+.shop {
+	background: #ffb320;
+}
+
+.shop > img {
+	width: 80%;
+}
+
+.camera {
+	background: #c9c9c9;
+}
+
+.camera > img {
+	width: 80%;
+}
+
+ .configurator {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+}
+/*
+div#testPanelCtn {
+	display: none;
+} */
